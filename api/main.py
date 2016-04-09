@@ -12,6 +12,19 @@ def info_pessoais_deputado(id_deputado):
 	response.headers['Access-Control-Allow-Origin'] = "*"
 	return response
 
+@app.route('/api/convenio/<id_convenio>')
+def convenio(id_convenio):
+	response = api_deputado.convenio(id_convenio)
+	response = make_response(response)
+	response.headers['Access-Control-Allow-Origin'] = "*"
+	return response
+
+@app.route('/api/deputado/<id_deputado>/convenios')
+def convenios_por_deputado(id_deputado):
+	response = api_deputado.convenios_por_deputado(id_deputado)
+	response = make_response(response)
+	response.headers['Access-Control-Allow-Origin'] = "*"
+	return response
 
 if __name__ == '__main__':
 	app.debug = True
