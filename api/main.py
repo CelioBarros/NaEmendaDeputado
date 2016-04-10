@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/api/deputado/<id_deputado>')
 def info_pessoais_deputado(id_deputado):
-	response = api_deputado.info_pessoais_deputado(str(unicodedata.normalize('NFKD', id_deputado).encode('ascii','ignore')))
+	response = api_deputado.info_pessoais_deputado(str(unicodedata.normalize('NFKD', id_deputado).encode('utf-8','ignore')))
 	response = make_response(response)
 	response.headers['Access-Control-Allow-Origin'] = "*"
 	return response

@@ -14,9 +14,11 @@ def info_pessoais_deputado(id_deputado):
 		for row in reader:
 			autor_id = str(row['Autor.id'])
 			autor_id = force_decode(str(autor_id))
-			autor_id = str(unicodedata.normalize('NFKD', autor_id).encode('ascii','ignore'))
+			autor_id = str(unicodedata.normalize('NFKD', autor_id).encode('utf-8','ignore'))
+
 			if (id_deputado == autor_id):
-				info_deputado = {"nome":force_decode(row['Autor']),"uf":row['Autor..UF.'], "partido":row['Partido']}
+				nome_deputado = str(unicodedata.normalize('NFKD', force_decode(row['Autor'])).encode('utf-8','ignore'))
+				info_deputado = {"nome":nome_deputado,"uf":row['Autor..UF.'], "partido":row['Partido'], "id_deputado":autor_id}
 				break
 	return json.dumps(info_deputado)
 
@@ -33,7 +35,9 @@ def todos_deputados():
 		reader = csv.DictReader(csvfile, delimiter=";")
 		for row in reader:
 			info_deputado = {}
-			info_deputado = {"nome":row['Autor'],"uf":row['Autor..UF.'], "partido":row['Partido']}
+			autor_id = str(unicodedata.normalize('NFKD', force_decode(row['Autor.id'])).encode('utf-8','ignore'))
+			nome_deputado = str(unicodedata.normalize('NFKD', force_decode(row['Autor'])).encode('utf-8','ignore'))
+			info_deputado = {"nome":nome_deputado,"uf":row['Autor..UF.'], "partido":row['Partido'], "id_deputado":autor_id}
 			lista_deputados.append(info_deputado)
 	return json.dumps(lista_deputados)
 
