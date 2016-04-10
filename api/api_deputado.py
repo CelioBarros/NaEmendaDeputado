@@ -66,3 +66,17 @@ def	convenios_por_deputado(id_deputado):
 					"acao": acao}
 				lista_convenios.append(info_convenio)
 	return json.dumps(lista_convenios)
+
+def busca(nome_deputado):
+	deputados = json.loads(todos_deputados())
+	out = []
+	for deputado in deputados:
+		nome = deputado['nome']
+		if nome_deputado.lower() in nome.lower():
+			out.append(deputado)
+
+	return json.dumps(out)
+
+
+
+

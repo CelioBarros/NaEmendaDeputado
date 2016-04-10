@@ -34,6 +34,13 @@ def convenios_por_deputado(id_deputado):
 	response.headers['Access-Control-Allow-Origin'] = "*"
 	return response
 
+@app.route('/api/busca/<nome_deputado>')
+def busca_deputado(nome_deputado):
+	response = api_deputado.busca(str(unicodedata.normalize('NFKD', nome_deputado).encode('utf-8','ignore')))
+	response = make_response(response)
+	response.headers['Access-Control-Allow-Origin'] = "*"
+	return response
+	
 if __name__ == '__main__':
 	app.debug = True
 	app.run(host='0.0.0.0', port=5002)
