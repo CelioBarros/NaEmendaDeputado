@@ -1,7 +1,3 @@
-.logo {
-  text-align: center;
-  margin-top: 60px;
-}
 .text-center {
   text-align: center;
 }
@@ -16,7 +12,16 @@
 .img-circle {
   border-radius: 50%;
 }
+.button-go {
+  float: right;
+}
 /* Estructure */
+.logo {
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+  width: 50px;
+}
 .profile {
   padding-top: 50px;
 }

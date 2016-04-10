@@ -61,19 +61,32 @@ angular.module('emenda.controllers', [])
   }
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams) {
-  $scope.dept = {
-    "id": 1,
-    "nome": "Deputado X",
-    "partido": "PT",
-    "uf": "PB",
-    "img": "http://ionicframework.com/img/docs/mcfly.jpg",
-    "convenios": [
+.controller('ProfileCtrl', function($scope, $http, $stateParams) {
+  var convenio = {
+    "id": 516457,
+    "titulo": "Convenio A"
+  };
+  $http.get('http://demo1278560.mockable.io/deputado/TIRIRICA_SP')
+    .then(function(data) {
+      $scope.dept = data.data;
+      $scope.dept.convenios = [];
+      $scope.dept.convenios.push(convenio);
+    }, function(data) {
+      //error callback
+    });
+})
+
+.controller('ConvenioCtrl', function($scope, $stateParams) {
+  $scope.convenio = {
+    "id": 516457,
+    "palavras": [
       {
-        "titulo": "Convenio A"
+        "palavra": "Construção",
+        "frequencia": 3
       },
       {
-        "titulo": "Convenio B"
+        "palavra": "Pavimentação",
+        "frequencia": 2
       }
     ]
   }

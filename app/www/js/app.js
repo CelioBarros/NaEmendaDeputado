@@ -24,7 +24,6 @@ angular.module('emenda', ['ionic', 'emenda.controllers'])
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
-
     .state('app.search', {
       url: '/search',
       views: {
@@ -34,24 +33,31 @@ angular.module('emenda', ['ionic', 'emenda.controllers'])
         }
       }
     })
-
   .state('app.profile', {
-      url: '/profile/:id',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/profile.html',
-          controller: 'ProfileCtrl'
-        }
+    url: '/profile/:id',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/profile.html',
+        controller: 'ProfileCtrl'
       }
-    })
-
+    }
+  })
+  .state('app.convenio', {
+    url: '/convenio/:id',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/convenio.html',
+        controller: 'ConvenioCtrl'
+      }
+    }
+  })
   .state('app.about', {
-      url: '/about',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/about.html'
-        }
+    url: '/about',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/about.html'
       }
-    });
+    }
+  });
   $urlRouterProvider.otherwise('/app/search');
 });
