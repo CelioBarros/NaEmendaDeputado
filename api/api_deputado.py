@@ -45,4 +45,24 @@ def	convenio(id_convenio):
 	return json.dumps({"convenio":"Saude"})
 
 def	convenios_por_deputado(id_deputado):
-	return json.dumps({"convenios":["convenio1","convenio2"]})
+	lista_convenios = []
+	with open('../data/convenio_deputados.csv') as csvfile:
+		reader = csv.DictReader(csvfile, delimiter=";")
+		for row in reader:
+			autor_id = str(row['ID_AUTOR'])
+			autor_id = force_decode(str(autor_id))
+			autor_id = str(unicodedata.normalize('NFKD', autor_id).encode('utf-8','ignore'))
+
+			if (id_deputado == autor_id):
+				objeto_convenio = str(unicodedata.normalize('NFKD', force_decode(row['TX_OBJETO_CONVENIO'])).encode('utf-8','ignore'))
+				vl_global = str(unicodedata.normalize('NFKD', force_decode(row['VL_GLOBAL'])).encode('utf-8','ignore'))
+				vl_repasse = str(unicodedata.normalize('NFKD', force_decode(row['VL_REPASSE'])).encode('utf-8','ignore'))
+				dt_publicacao = str(unicodedata.normalize('NFKD', force_decode(row['DT_PUBLICACAO'])).encode('utf-8','ignore'))
+				acao = str(unicodedata.normalize('NFKD', force_decode(row['acao.ab'])).encode('utf-8','ignore'))
+				info_convenio = {
+					"objeto_convenio":objeto_convenio,
+					"vl_global":vl_global, "vl_repasse":vl_repasse, 
+					"dt_publicacao":dt_publicacao,
+					"acao": acao}
+				lista_convenios.append(info_convenio)
+	return json.dumps(lista_convenios)

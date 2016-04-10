@@ -29,7 +29,7 @@ def convenio(id_convenio):
 
 @app.route('/api/deputado/<id_deputado>/convenios')
 def convenios_por_deputado(id_deputado):
-	response = api_deputado.convenios_por_deputado(id_deputado)
+	response = api_deputado.convenios_por_deputado(str(unicodedata.normalize('NFKD', id_deputado).encode('utf-8','ignore')))
 	response = make_response(response)
 	response.headers['Access-Control-Allow-Origin'] = "*"
 	return response
