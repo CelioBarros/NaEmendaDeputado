@@ -1,0 +1,9 @@
+<ion-view view-title="Convênios de {{dept.nome}}">
+
+  <ion-content padding="true" class="light has-header colorfull nm-calm">
+
+    <h1 class="light text-center">{{convenio.id}}</h1>
+    <p ng-repeat="word in words | orderBy:'-weight'" ng-style="{'font-size': word.weight*0.6+'em'}">{{word.word}}</p>
+
+  </ion-content>
+</ion-view>
