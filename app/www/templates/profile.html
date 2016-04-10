@@ -1,0 +1,19 @@
+<ion-view view-title="Perfil do deputado">
+
+  <ion-content padding="true" class="has-header colorfull nm-dark">
+
+    <div class="profile text-center">
+      <img ng-src="{{dept.img}}" alt="{{dept.nome}}" class="img-circle">
+
+      <h1>{{dept.nome}}</h1>
+      <h3>{{dept.partido}}/{{dept.uf}}</h3>
+    </div>
+
+    <div class="card" ng-repeat="convenio in dept.convenios">
+      <div class="item item-text-wrap">
+        <p>{{convenio.titulo}}</p>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,22 @@
+.logo {
+  text-align: center;
+  margin-top: 60px;
+}
+.text-center {
+  text-align: center;
+}
+.options-form {
+  margin-top: 30px;
+}
+.colorfull               { background-color: #F19600; }
+.colorfull.nm-energized  { background-color: #F19600; }
+.colorfull.nm-dark       { background-color: #4D4040; color: #FFF; }
+.colorfull.nm-calm       { background-color: #4872B5; }
+
+.img-circle {
+  border-radius: 50%;
+}
+/* Estructure */
+.profile {
+  padding-top: 50px;
+}
