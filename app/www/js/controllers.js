@@ -90,4 +90,10 @@ angular.module('emenda.controllers', [])
       }
     ]
   }
+  $scope.words = [
+    { 'word': 'Construção', 'weight': 5},
+    { 'word': 'Pavimentação', 'weight': 1},
+    { 'word': 'Cabedelo', 'weight': 3},
+    { 'word': 'Praia', 'weight': 3}
+  ];
 });
