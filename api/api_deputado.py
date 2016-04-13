@@ -42,8 +42,30 @@ def todos_deputados():
 			lista_deputados.append(info_deputado)
 	return json.dumps(lista_deputados)
 
-def	convenio(id_convenio):
-	return json.dumps({"convenio":"Saude"})
+def	convenio(id_deputado,id_convenio):
+	info_convenio = {}
+	with open('../data/convenio_deputados.csv') as csvfile:
+		reader = csv.DictReader(csvfile, delimiter=";")
+		for row in reader:
+			autor_id = str(row['Autor.id'])
+			autor_id = force_decode(str(autor_id))
+			autor_id = str(unicodedata.normalize('NFKD', autor_id).encode('utf-8','ignore'))
+			convenio_id = str(unicodedata.normalize('NFKD', force_decode(row['ID_CONVENIO'])).encode('utf-8','ignore'))
+
+			if (id_deputado == autor_id and id_convenio == convenio_id):
+				objeto_convenio = str(unicodedata.normalize('NFKD', force_decode(row['TX_OBJETO_CONVENIO'])).encode('utf-8','ignore'))
+				vl_global = str(unicodedata.normalize('NFKD', force_decode(row['VL_GLOBAL'])).encode('utf-8','ignore'))
+				vl_repasse = str(unicodedata.normalize('NFKD', force_decode(row['VL_REPASSE'])).encode('utf-8','ignore'))
+				dt_publicacao = str(unicodedata.normalize('NFKD', force_decode(row['DT_PUBLICACAO'])).encode('utf-8','ignore'))
+				acao = str(unicodedata.normalize('NFKD', force_decode(row['acao.ab'])).encode('utf-8','ignore'))
+				info_convenio = { 
+					"id_deputado": id_deputado,
+					"id_convenio": id_convenio,
+					"objeto_convenio":objeto_convenio,
+					"vl_global":vl_global, "vl_repasse":vl_repasse, 
+					"dt_publicacao":dt_publicacao,
+					"acao": acao}
+	return json.dumps(info_convenio)
 
 def	convenios_por_deputado(id_deputado):
 	lista_convenios = []
@@ -61,7 +83,8 @@ def	convenios_por_deputado(id_deputado):
 				vl_repasse = str(unicodedata.normalize('NFKD', force_decode(row['VL_REPASSE'])).encode('utf-8','ignore'))
 				dt_publicacao = str(unicodedata.normalize('NFKD', force_decode(row['DT_PUBLICACAO'])).encode('utf-8','ignore'))
 				acao = str(unicodedata.normalize('NFKD', force_decode(row['acao.ab'])).encode('utf-8','ignore'))
-				info_convenio = {
+				info_convenio = { 
+					"id_deputado": id_deputado,
 					"id_convenio": id_convenio,
 					"objeto_convenio":objeto_convenio,
 					"vl_global":vl_global, "vl_repasse":vl_repasse, 
