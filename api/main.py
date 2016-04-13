@@ -20,13 +20,15 @@ def todos_deputados():
 	response.headers['Access-Control-Allow-Origin'] = "*"
 	return response
 
-@app.route('/api/convenio/<id_convenio>')
-def convenio(id_convenio):
-	response = api_deputado.convenio(id_convenio)
+@app.route('/api/deputado/<id_deputado>/convenio/<id_convenio>')
+def convenio(id_deputado,id_convenio):
+	id_deputado = str(unicodedata.normalize('NFKD', id_deputado).encode('utf-8','ignore'))
+	id_convenio = str(unicodedata.normalize('NFKD', id_convenio).encode('utf-8','ignore'))
+	response = api_deputado.convenio(id_deputado,id_convenio)
 	response = make_response(response)
 	response.headers['Access-Control-Allow-Origin'] = "*"
 	return response
-
+	
 @app.route('/api/deputado/<id_deputado>/convenios')
 def convenios_por_deputado(id_deputado):
 	response = api_deputado.convenios_por_deputado(str(unicodedata.normalize('NFKD', id_deputado).encode('utf-8','ignore')))
