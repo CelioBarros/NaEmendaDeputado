@@ -1,33 +1,35 @@
 <ion-view view-title="Pesquisar">
-  <ion-content padding="true" class="colorfull nm-energized">
 
-    <div class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" viewBox="0 0 12 27.5" version="1.1" x="0px" y="0px" width="100%">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-          <path d="M0.691164439,0.865826225 L3.82608695,4.76587039 C3.82608695,4.76587039 7.04926423e-08,17.8603194 0,18.5868945 C-8.5938946e-08,19.3134696 4.91634409,22 5.50006907,22 C6.08379402,22 11.0000005,19.2366337 11,18.5868945 C10.9999996,17.9371553 7.17391305,4.76587039 7.17391305,4.76587039 L10.1370784,0.865826225 C10.1370784,0.865826225 10.8282429,0 9.445914,0 L1.61271702,0 C0.230388146,0 0.691164439,0.865826225 0.691164439,0.865826225 Z M8,5 L11.8753066,11.4392024 C12.0544127,11.7368047 12.0383846,12.2100014 11.8413176,12.4935118 L10.7941633,14 L8,5 Z" fill="#fff" sketch:type="MSShapeGroup"/>
-        </g>
-      </svg>
-    </div>
+  <ion-content padding="false" class="colorfull" ng-class="{'nm-energized': !searchTerm.isSearching}">
 
-    <div class="list list-inset">
-      <form ng-submit="search()">
-        <label class="item item-input">
-          <i class="icon ion-search placeholder-icon"></i>
-          <input type="text" placeholder="Pesquisar deputado" ng-model="searchTerm.term">
-        </label>
-      </form>
+    <div class="search-box colorfull nm-energized" ng-class="{'search-box-folded': searchTerm.isSearching}">
+      <div class="logo" ng-class="{'logo-folded': searchTerm.isSearching}">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" viewBox="0 0 12 27.5" version="1.1" x="0px" y="0px" width="100%">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+            <path d="M0.691164439,0.865826225 L3.82608695,4.76587039 C3.82608695,4.76587039 7.04926423e-08,17.8603194 0,18.5868945 C-8.5938946e-08,19.3134696 4.91634409,22 5.50006907,22 C6.08379402,22 11.0000005,19.2366337 11,18.5868945 C10.9999996,17.9371553 7.17391305,4.76587039 7.17391305,4.76587039 L10.1370784,0.865826225 C10.1370784,0.865826225 10.8282429,0 9.445914,0 L1.61271702,0 C0.230388146,0 0.691164439,0.865826225 0.691164439,0.865826225 Z M8,5 L11.8753066,11.4392024 C12.0544127,11.7368047 12.0383846,12.2100014 11.8413176,12.4935118 L10.7941633,14 L8,5 Z" fill="#fff" sketch:type="MSShapeGroup"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="list list-inset" ng-class="{'search-box-input-folded': searchTerm.isSearching}">
+        <form ng-submit="search()">
+          <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Pesquisar deputado" ng-model="searchTerm.term" ng-focus="startSearch()">
+          </label>
+        </form>
+      </div>
+
     </div>
 
     <div class="card" ng-repeat="dept in deputados">
-
-        <div class="item">
-          <!-- <img ng-src="{{dept.img}}"> -->
-          <a ng-href="#/app/profile/{{dept.id_deputado}}" class="button button-icon icon ion-chevron-right button-go"></a>
-          <h2>{{dept.nome}}</h2>
-          <p>{{dept.uf}} | {{dept.partido}}</p>
-        </div>
-
+      <div class="item" ui-sref="app.profile({ id_deputado: dept.id_deputado})">
+        <!-- <img ng-src="{{dept.img}}"> -->
+        <h2>{{dept.nome}}</h2>
+        <p>{{dept.partido}} | {{dept.uf}}</p>
+      </div>
     </div>
 
   </ion-content>
+
 </ion-view>

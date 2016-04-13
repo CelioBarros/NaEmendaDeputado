@@ -43,13 +43,20 @@ angular.module('emenda.controllers', [])
 
 .controller('SearchCtrl', function($scope, $http) {
   $scope.searchTerm = {
-    term: ""
+    term: "",
+    isSearching: false
   };
   $scope.showFilter = false;
   $scope.deputados = [];
 
   $scope.toggleFilter = function() {
     $scope.showFilter = !$scope.showFilter;
+  }
+  $scope.startSearch = function() {
+    $scope.searchTerm.isSearching = true;
+  }
+  $scope.stopSearch = function() {
+    $scope.searchTerm.isSearching = false;
   }
   $scope.search = function() {
     $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/busca/'+$scope.searchTerm.term)
@@ -66,7 +73,6 @@ angular.module('emenda.controllers', [])
       $scope.dept = response.data;
       $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/deputado/'+id_deputado+'/convenios')
         .then(function(response) {
-          console.log(response);
           $scope.dept.convenios = response.data;
         }, function(data) {
           //error callback

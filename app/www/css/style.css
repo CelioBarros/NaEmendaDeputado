@@ -4,7 +4,7 @@
 .options-form {
   margin-top: 30px;
 }
-.colorfull               { background-color: #F19600; }
+.colorfull               { background-color: rgba(77, 64, 64, 0.08); transition: background-color 0.25s ease;}
 .colorfull.nm-energized  { background-color: #F19600; }
 .colorfull.nm-dark       { background-color: #4D4040; color: #FFF; }
 .colorfull.nm-calm       { background-color: #4872B5; }
@@ -19,9 +19,28 @@
 .logo {
   text-align: center;
   margin: auto;
-  margin-top: 50px;
   width: 50px;
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+.logo.logo-folded {
+  width: 0;
+  opacity: 0;
 }
 .profile {
   padding-top: 50px;
+}
+.search-box {
+  padding-top: 50px;
+  padding-bottom: 15px;
+}
+.search-box.search-box-folded {
+  margin-bottom: 38px;
+}
+.list:last-child.search-box-input-folded {
+  margin-bottom: -36px;
+}
+/* ionic overhide */
+.placeholder-icon:first-child {
+  padding-right: 12px;
 }

@@ -3,16 +3,15 @@
   <ion-content padding="true" class="has-header colorfull nm-dark">
 
     <div class="profile text-center">
-      <img ng-src="http://ionicframework.com/img/docs/mcfly.jpg" alt="{{dept.nome}}" class="img-circle">
+      <!-- <img ng-src="http://ionicframework.com/img/docs/mcfly.jpg" alt="{{dept.nome}}" class="img-circle"> -->
 
       <h1 class="light">{{dept.nome}}</h1>
-      <h3 class="light">{{dept.partido}}/{{dept.uf}}</h3>
+      <h3 class="light">{{dept.partido}} | {{dept.uf}}</h3>
     </div>
 
     <div class="card" ng-repeat="convenio in dept.convenios">
-      <div class="item item-text-wrap">
-        <a ng-href="#/app/convenio/{{convenio.id}}" class="button button-small button-icon icon ion-chevron-right button-go"></a>
-        <p>{{convenio.acao}}</p>
+      <div class="item item-text-wrap" ui-sref="app.convenio({ id_convenio: convenio.id_convenio})">
+        <p>{{convenio.objeto_convenio}}</p>
       </div>
     </div>
 
