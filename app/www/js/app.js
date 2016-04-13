@@ -34,7 +34,7 @@ angular.module('emenda', ['ionic', 'emenda.controllers'])
       }
     })
   .state('app.profile', {
-    url: '/profile/:id',
+    url: '/profile/:id_deputado',
     views: {
       'menuContent': {
         templateUrl: 'templates/profile.html',

@@ -41,8 +41,10 @@ angular.module('emenda.controllers', [])
   };
 })
 
-.controller('SearchCtrl', function($scope) {
-  $scope.searchTerm = "";
+.controller('SearchCtrl', function($scope, $http) {
+  $scope.searchTerm = {
+    term: ""
+  };
   $scope.showFilter = false;
   $scope.deputados = [];
 
@@ -50,27 +52,26 @@ angular.module('emenda.controllers', [])
     $scope.showFilter = !$scope.showFilter;
   }
   $scope.search = function() {
-    var dept = {
-      "id": 1,
-      "nome": "Deputado X",
-      "partido": "PT",
-      "uf": "PB",
-      "img": "http://ionicframework.com/img/docs/mcfly.jpg"
-    }
-    $scope.deputados.push(dept);
+    $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/busca/'+$scope.searchTerm.term)
+      .then(function(response) {
+        $scope.deputados = response.data;
+      });
   }
 })
 
 .controller('ProfileCtrl', function($scope, $http, $stateParams) {
-  var convenio = {
-    "id": 516457,
-    "titulo": "Convenio A"
-  };
-  $http.get('http://demo1278560.mockable.io/deputado/TIRIRICA_SP')
-    .then(function(data) {
-      $scope.dept = data.data;
-      $scope.dept.convenios = [];
-      $scope.dept.convenios.push(convenio);
+  var id_deputado = $stateParams.id_deputado;
+  $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/deputado/'+id_deputado)
+    .then(function(response) {
+      $scope.dept = response.data;
+      $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/deputado/'+id_deputado+'/convenios')
+        .then(function(response) {
+          console.log(response);
+          $scope.dept.convenios = response.data;
+        }, function(data) {
+          //error callback
+        });
+
     }, function(data) {
       //error callback
     });

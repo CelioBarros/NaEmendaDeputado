@@ -13,16 +13,16 @@
       <form ng-submit="search()">
         <label class="item item-input">
           <i class="icon ion-search placeholder-icon"></i>
-          <input type="text" placeholder="Pesquisar deputado" ng-model="searchTerm">
+          <input type="text" placeholder="Pesquisar deputado" ng-model="searchTerm.term">
         </label>
       </form>
     </div>
 
     <div class="card" ng-repeat="dept in deputados">
 
-        <div class="item item-avatar">
-          <img ng-src="{{dept.img}}">
-          <a ng-href="#/app/profile/{{dept.id}}" class="button button-icon icon ion-chevron-right button-go"></a>
+        <div class="item">
+          <!-- <img ng-src="{{dept.img}}"> -->
+          <a ng-href="#/app/profile/{{dept.id_deputado}}" class="button button-icon icon ion-chevron-right button-go"></a>
           <h2>{{dept.nome}}</h2>
           <p>{{dept.uf}} | {{dept.partido}}</p>
         </div>
