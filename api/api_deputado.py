@@ -4,6 +4,7 @@ import json
 import csv
 import unicodedata
 import time
+import os
 
 
 def info_pessoais_deputado(id_deputado):
@@ -18,7 +19,7 @@ def info_pessoais_deputado(id_deputado):
 
 			if (id_deputado == autor_id):
 				nome_deputado = str(unicodedata.normalize('NFKD', force_decode(row['Autor'])).encode('utf-8','ignore'))
-				info_deputado = {"nome":nome_deputado,"uf":row['Autor..UF.'], "partido":row['Partido'], "id_deputado":autor_id}
+				info_deputado = {"nome":nome_deputado,"uf":row['Autor..UF.'], "partido":row['Partido'], "id_deputado":autor_id, "TotalConvenios":row['TotalConvenios']}
 				break
 	return json.dumps(info_deputado)
 
@@ -37,7 +38,7 @@ def todos_deputados():
 			info_deputado = {}
 			autor_id = str(unicodedata.normalize('NFKD', force_decode(row['Autor.id'])).encode('utf-8','ignore'))
 			nome_deputado = str(unicodedata.normalize('NFKD', force_decode(row['Autor'])).encode('utf-8','ignore'))
-			info_deputado = {"nome":nome_deputado,"uf":row['Autor..UF.'], "partido":row['Partido'], "id_deputado":autor_id}
+			info_deputado = {"nome":nome_deputado,"uf":row['Autor..UF.'], "partido":row['Partido'], "id_deputado":autor_id, "TotalConvenios":row['TotalConvenios']}
 			lista_deputados.append(info_deputado)
 	return json.dumps(lista_deputados)
 
@@ -49,7 +50,7 @@ def	convenios_por_deputado(id_deputado):
 	with open('../data/convenio_deputados.csv') as csvfile:
 		reader = csv.DictReader(csvfile, delimiter=";")
 		for row in reader:
-			autor_id = str(row['ID_AUTOR'])
+			autor_id = str(row['Autor.id'])
 			autor_id = force_decode(str(autor_id))
 			autor_id = str(unicodedata.normalize('NFKD', autor_id).encode('utf-8','ignore'))
 
