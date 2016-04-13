@@ -55,12 +55,14 @@ def	convenios_por_deputado(id_deputado):
 			autor_id = str(unicodedata.normalize('NFKD', autor_id).encode('utf-8','ignore'))
 
 			if (id_deputado == autor_id):
+				id_convenio = str(unicodedata.normalize('NFKD', force_decode(row['ID_CONVENIO'])).encode('utf-8','ignore'))
 				objeto_convenio = str(unicodedata.normalize('NFKD', force_decode(row['TX_OBJETO_CONVENIO'])).encode('utf-8','ignore'))
 				vl_global = str(unicodedata.normalize('NFKD', force_decode(row['VL_GLOBAL'])).encode('utf-8','ignore'))
 				vl_repasse = str(unicodedata.normalize('NFKD', force_decode(row['VL_REPASSE'])).encode('utf-8','ignore'))
 				dt_publicacao = str(unicodedata.normalize('NFKD', force_decode(row['DT_PUBLICACAO'])).encode('utf-8','ignore'))
 				acao = str(unicodedata.normalize('NFKD', force_decode(row['acao.ab'])).encode('utf-8','ignore'))
 				info_convenio = {
+					"id_convenio": id_convenio,
 					"objeto_convenio":objeto_convenio,
 					"vl_global":vl_global, "vl_repasse":vl_repasse, 
 					"dt_publicacao":dt_publicacao,
