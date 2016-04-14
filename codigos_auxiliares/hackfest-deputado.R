@@ -1,7 +1,8 @@
 library(dplyr)
 library(tm)
+library(stringr)
 
-data <- read.csv("dadosunidos.csv",sep=";",encoding = "UTF-8")
+data <- read.csv("dataJoinedDepFed.csv",sep=";",encoding = "UTF-8")
 options(scipen=999)
 data$VL_GLOBAL_NUMERIC <- gsub("[R$ ]","",data$VL_GLOBAL)
 data$VL_GLOBAL_NUMERIC <- gsub("[.]","",data$VL_GLOBAL_NUMERIC)
@@ -17,7 +18,7 @@ data.deputados <- data %>%
         select(Autor.id,Autor,Autor..UF.,Partido,TotalConvenios) %>%
         arrange(Autor.id)
 
-#write.table(data.deputados,"C:/Users/Celio/Desktop/Estudo/analytics/NaEmendaDeputado/data/info_deputados.csv",sep=";",row.names = F)
+#write.table(data.deputados,"/home/celio/Desenvolvimento/Estudo/NaEmendaDeputado/data/info_deputados.csv",sep=";",row.names = F)
 
 convenio.deputados <- data %>%
         filter(Autor..Tipo. =="DEPUTADO FEDERAL" & !is.na(ID_CONVENIO)) %>%
@@ -26,7 +27,7 @@ convenio.deputados <- data %>%
         select(Autor.id,ID_CONVENIO,TX_OBJETO_CONVENIO,
                VL_GLOBAL,VL_REPASSE,DT_PUBLICACAO,acao.ab)
 
-#write.table(convenio.deputados,"C:/Users/Celio/Desktop/Estudo/analytics/NaEmendaDeputado/data/convenio_deputados.csv",sep=";",row.names = F)
+#write.table(convenio.deputados,"/home/celio/Desenvolvimento/Estudo/NaEmendaDeputado/data/convenio_deputados.csv",sep=";",row.names = F)
 
 sw = stopwords("pt-br")
 topwords = function(words){
@@ -50,4 +51,4 @@ lda.data <- data %>%
   summarise(TEXTO_POR_AUTOR = topwords(paste(TX_OBJETO_CONVENIO, collapse=" ")))
 
   
-#write.table(lda.data,"C:/Users/Celio/Desktop/Estudo/analytics/NaEmendaDeputado/data/lda_autor_conv.csv",row.names = F, sep=";")
+#write.table(lda.data,"/home/celio/Desenvolvimento/Estudo/NaEmendaDeputado/lda/lda_autor_conv.csv",row.names = F, sep=";")

@@ -7,6 +7,9 @@ from sklearn.decomposition import NMF, LatentDirichletAllocation
 from sklearn.datasets import fetch_20newsgroups
 import numpy as np
 import lda
+import nltk
+import unicodedata
+
 
 def get_vocab(data_samples):
     vocab = set()
@@ -16,6 +19,29 @@ def get_vocab(data_samples):
             vocab.add(token)
     return tuple(vocab)
 
+def force_decode(string, codecs=['utf8', 'cp1252']):
+    for i in codecs:
+        try:
+            return string.decode(i)
+        except:
+            pass
+    return force_decode_word(string, codecs=['utf8', 'cp1252'])
+
+def force_decode_word(string, codecs=['utf8','cp1252']):
+    list_string = string.split(" ")
+    text = ""
+    print("aqui")
+    for word in list_string:
+        word_cod = ''
+        for i in codecs:
+            try:
+                word_cod = str(word).decode(i) + " "
+            except:
+                word_cod = ''
+                pass
+        text += word_cod
+    print(text)
+    return text
 
 if len(sys.argv) != 2:
     print('usage: python topics_extraction_with_nmf_lda.py text-deputados.txt')
@@ -32,11 +58,23 @@ data_samples = linha.split(',')
 
 # calculando tf-idf
 print("Extracting tf-idf features for NMF...")
+sw = nltk.corpus.stopwords.words('portuguese')
 tfidf_vectorizer = TfidfVectorizer(max_df=0.95, min_df=2, #max_features=n_features,
-                                   stop_words='english')
+                                   stop_words=sw)
+
+data = []
+for x in data_samples:
+    try:
+        data.append(str(unicodedata.normalize('NFKD', force_decode(x)).encode('utf-8','ignore')))
+    except:
+        pass
+
+#data_samples = [force_decode(x).encode('utf-8','ignore') for x in data_samples]
+
+#print(data_samples)
 tfidf = tfidf_vectorizer.fit_transform(data_samples)
 tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, max_features=n_features,
-                                stop_words='english')
+                                stop_words=sw)
 tf = tf_vectorizer.fit_transform(data_samples)
 
 
