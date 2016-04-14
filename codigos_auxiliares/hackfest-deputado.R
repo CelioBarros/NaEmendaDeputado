@@ -10,10 +10,10 @@ data$VL_GLOBAL_NUMERIC <- gsub("[,]",".",data$VL_GLOBAL_NUMERIC)
 
 data.deputados <- data %>%
         filter(Autor..Tipo. =="DEPUTADO FEDERAL") %>%
-        distinct(Autor,Autor..UF.,Partido) %>%
         mutate(Autor.id = paste(Autor, Autor..UF., sep = '_')) %>%
-        group_by(ID_PROPOSTA,Autor.id) %>%
+        group_by(Autor.id) %>%
         mutate(TotalConvenios = as.character(sum(as.numeric(VL_GLOBAL_NUMERIC)))) %>%
+        distinct(Autor.id) %>%
         ungroup() %>%
         select(Autor.id,Autor,Autor..UF.,Partido,TotalConvenios) %>%
         arrange(Autor.id)
