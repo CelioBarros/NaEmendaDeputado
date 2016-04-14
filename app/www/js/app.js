@@ -52,7 +52,7 @@ angular.module('emenda', ['ionic', 'emenda.controllers'])
     }
   })
   .state('app.convenio', {
-    url: '/convenio/:id_convenio',
+    url: '/convenio/:id_deputado/:id_convenio',
     views: {
       'menuContent': {
         templateUrl: 'templates/convenio.html',

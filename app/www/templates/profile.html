@@ -30,7 +30,7 @@
 
       <p class="text-center" ng-show="dept.convenios.length < 1">Este deputado não possui convênios</p>
 
-      <div class="card" ui-sref="app.convenio({ id_convenio: convenio.id_convenio})" ng-repeat="convenio in dept.convenios">
+      <div class="card" ui-sref="app.convenio({ id_deputado: dept.id_deputado, id_convenio: convenio.id_convenio})" ng-repeat="convenio in dept.convenios">
         <div class="item item-divider">
             Nº {{convenio.id_convenio}}
         </div>

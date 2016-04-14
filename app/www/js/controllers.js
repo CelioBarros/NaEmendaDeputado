@@ -81,24 +81,11 @@ angular.module('emenda.controllers', [])
     }, function(data) {});
 })
 
-.controller('ConvenioCtrl', function($scope, $stateParams) {
-  $scope.convenio = {
-    "id": 516457,
-    "palavras": [
-      {
-        "palavra": "Construção",
-        "frequencia": 3
-      },
-      {
-        "palavra": "Pavimentação",
-        "frequencia": 2
-      }
-    ]
-  }
-  $scope.words = [
-    { 'word': 'Construção', 'weight': 5},
-    { 'word': 'Pavimentação', 'weight': 1},
-    { 'word': 'Cabedelo', 'weight': 3},
-    { 'word': 'Praia', 'weight': 3}
-  ];
+.controller('ConvenioCtrl', function($scope, $http, $stateParams) {
+  var id_deputado = $stateParams.id_deputado;
+  var id_convenio = $stateParams.id_convenio;
+  $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/deputado/'+id_deputado+'/convenio/'+id_convenio)
+    .then(function(response) {
+      $scope.convenio = response.data;
+    }, function(data) {});
 });
