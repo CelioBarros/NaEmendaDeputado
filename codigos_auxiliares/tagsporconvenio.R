@@ -29,3 +29,7 @@ write.table(convenios_topwords,"gen_data/id_convenios-tags.csv",sep=";",row.name
 sink("gen_data/jsonf.json")
 cat(toJSON(unname(split(convenios_topwords, 1:nrow(convenios_topwords)))))
 sink()
+
+### 1. Tags por deputados
+
+# Linkar deputados a seus respectivos convenios
