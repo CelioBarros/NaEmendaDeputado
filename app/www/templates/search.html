@@ -12,16 +12,6 @@
         </svg>
       </div>
 
-
-      <div class="list list-inset" ng-class="{'search-box-input-folded': searchTermEstado.isSearching}">
-        <form ng-submit="searchEstado()">
-          <label class="item item-input">
-            <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" placeholder="Estado" ng-model="searchTermEstado.term" ng-focus="startSearch()">
-          </label>
-        </form>
-      </div>
-
       <div class="list list-inset" ng-class="{'search-box-input-folded': searchTerm.isSearching}">
         <form ng-submit="search()">
           <label class="item item-input">
@@ -32,6 +22,25 @@
       </div>
 
     </div> <!-- search box -->
+
+    <div class="text-center" ng-show="searchTerm.isLoading">
+      <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#4D4040">
+          <g fill="none" fill-rule="evenodd">
+              <g transform="translate(1 1)" stroke-width="2">
+                  <circle stroke-opacity=".5" cx="18" cy="18" r="18"/>
+                  <path d="M36 18c0-9.94-8.06-18-18-18">
+                      <animateTransform
+                          attributeName="transform"
+                          type="rotate"
+                          from="0 18 18"
+                          to="360 18 18"
+                          dur="1s"
+                          repeatCount="indefinite"/>
+                  </path>
+              </g>
+          </g>
+      </svg>
+    </div>
 
     <div class="card" ng-repeat="dept in deputados">
       <div class="item" ui-sref="app.profile({ id_deputado: dept.id_deputado})">

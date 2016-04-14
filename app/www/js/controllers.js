@@ -41,35 +41,11 @@ angular.module('emenda.controllers', [])
   };
 })
 
-/*.controller('SearchCtrlEstado', function($scope, $http) {
-  $scope.searchTermEstado = {
-    term: "",
-    isSearching: false
-  };
-  $scope.showFilter = false;
-  $scope.estados = [];
-
-  $scope.toggleFilter = function() {
-    $scope.showFilter = !$scope.showFilter;
-  }
-  $scope.startSearch = function() {
-    $scope.searchTermEstado.isSearching = true;
-  }
-  $scope.stopSearch = function() {
-    $scope.searchTermEstado.isSearching = false;
-  }
-  $scope.search = function() {
-    $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/todos_deputados')
-      .then(function(response) {
-        $scope.estados = response.data;
-      });
-  }
-})*/
-
 .controller('SearchCtrl', function($scope, $http) {
   $scope.searchTerm = {
     term: "",
-    isSearching: false
+    isSearching: false,
+    isLoading: false
   };
   $scope.showFilter = false;
   $scope.deputados = [];
@@ -84,9 +60,11 @@ angular.module('emenda.controllers', [])
     $scope.searchTerm.isSearching = false;
   }
   $scope.search = function() {
+    $scope.searchTerm.isLoading = true;
     $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/busca/'+$scope.searchTerm.term)
       .then(function(response) {
         $scope.deputados = response.data;
+        $scope.searchTerm.isLoading = false;
       });
   }
 })
@@ -96,16 +74,11 @@ angular.module('emenda.controllers', [])
   $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/deputado/'+id_deputado)
     .then(function(response) {
       $scope.dept = response.data;
-      $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/deputado/'+id_deputado+'/convenios')
-        .then(function(response) {
-          $scope.dept.convenios = response.data;
-        }, function(data) {
-          //error callback
-        });
-
-    }, function(data) {
-      //error callback
-    });
+    }, function(data) {});
+  $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/deputado/'+id_deputado+'/convenios')
+    .then(function(response) {
+      $scope.dept.convenios = response.data;
+    }, function(data) {});
 })
 
 .controller('ConvenioCtrl', function($scope, $stateParams) {

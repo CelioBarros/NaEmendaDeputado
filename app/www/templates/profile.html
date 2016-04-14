@@ -1,39 +1,40 @@
-<ion-view view-title="Perfil do Deputado">
+<ion-view>
 
-  <ion-content padding="true" class="has-header colorfull lin-back">
+  <ion-content padding="false">
 
-    <div class="row search-bar">
-      <div class="col">
-        <a class="button button-icon ion-ios-search search-button" href="#/app/search"></a>
+    <div class="profile text-center colorfull nm-dark padding">
+      <div class="text-right colorfull nm-dark">
+        <a class="button button-icon ion-android-search search-button" href="#/app/search"></a>
       </div>
-    </div>
+      <div class="icon-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve">
+          <path d="M31.511,33.806c-1.474-5.661-0.091-6.778,1.247-6.768c0.309,0.002,0.359-0.003,0.627,0.077l0.004-0.124  c0,0-3.964-13.23,5.572-19.048c0,0-1.676-1.358-1.546-3.314c0,0,4.372,0.496,8.562,0.505c1.904,0.004,3.771-0.093,5.171-0.382  c0.56-0.116,1.126-0.162,1.688-0.148c3.935,0.099,7.706,3.166,8.369,6.127c0,0,0.058-0.005,0.164-0.005  c1.244-0.002,9.058,0.596,5.308,16.317c0,0-0.003,0.021-0.009,0.059c0.181-0.038,0.372-0.063,0.563-0.066  c1.342-0.017,2.737,1.09,1.259,6.767c-1.181,4.536-2.275,5.704-3.087,5.701c-0.271-0.001-0.51-0.132-0.711-0.311  c-0.569,3.567-2.064,7.909-5.766,10.994c-9.141,7.02-17.819,0.139-17.819,0.139c-3.79-3.064-5.327-7.434-5.917-11.035  c-0.179,0.132-0.385,0.218-0.611,0.214C33.768,39.49,32.682,38.304,31.511,33.806z M50.099,95.179l6.3-6.907l-4.6-20.318  c0,0,7.335-10.078-1.799-9.961c-9.134-0.117-1.799,9.961-1.799,9.961l-4.6,20.318l6.3,6.907v0.217L50,95.288l0.099,0.108V95.179z   M84.336,73.207c0.259-3.671-0.048-11.099-6.48-12.734c-8.624-2.193-15.632-7.126-15.632-7.126l-5.795,18.327l3.573,15.783  c0.033,0.147,0.057,0.295,0.072,0.443c14.922-1.921,23.544-7.525,23.544-7.525c0.821-2.071,0.747-7.175,0.747-7.175L84.336,73.207z   M39.998,87.457l3.573-15.783l-0.328-1.036l0,0l-5.467-17.291c0,0-7.007,4.934-15.632,7.126c-6.428,1.634-6.739,9.054-6.48,12.727  c0,0-0.074,5.104,0.747,7.175c0,0,8.611,5.597,23.516,7.521C39.941,87.749,39.965,87.602,39.998,87.457z"/>
+        </svg>
+      </div>
 
-    <div class="profile text-center">
-    <img ng-src="http://ionicframework.com/img/docs/mcfly.jpg" alt="{{dept.nome}}" class="img-circle">
-
-      <h3 class="nome-dep">{{dept.nome}}</h3>
+      <h3 class="title">{{dept.nome}}</h3>
       <h4 class="capt-number">{{dept.partido}} - {{dept.uf}}</h4>
     </div>
 
-    <div class="row text-center dest-number">
+    <div class="row text-center dest-number padding-top">
       <div class="col">849</div>
-      <div class="col">{{dept.TotalConvenios}}</div>
-      <div class="col">{{dept.TotalConvenios}}</div>
+      <div class="col">{{dept.TotalConvenios | currency:"R$ "}}</div>
     </div>
     <div class="row text-center capt-number">
       <div class="col">Nº Convênios</div>
       <div class="col">Total Gasto</div>
-      <div class="col">Total Gasto</div>
     </div>
 
-    <hr>
-    <h3>Convênios</h3>
+    <div class="profile text-center colorfull nm-calm padding-bottom">
+      <h3 class="title">Convênios</h3>
 
-    <div class="card" ng-repeat="convenio in dept.convenios">
-      <div class="item item-text-wrap" ui-sref="app.convenio({ id_convenio: convenio.id_convenio})">
-        <p>{{convenio.objeto_convenio}}</p>
+      <div class="card" ng-repeat="convenio in dept.convenios">
+        <div class="item item-text-wrap" ui-sref="app.convenio({ id_convenio: convenio.id_convenio})">
+          <p>{{convenio.objeto_convenio}}</p>
+        </div>
       </div>
     </div>
 
   </ion-content>
+
 </ion-view>

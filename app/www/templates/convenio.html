@@ -1,6 +1,8 @@
 <ion-view view-title="Convênios de {{dept.nome}}">
 
-  <ion-content padding="true" class="light has-header colorfull nm-calm">
+  <ion-content padding="true" class="colorfull nm-calm">
+
+      <a class="button button-icon ion-android-arrow-back search-button" ui-sref="app.profile({ id_deputado: dept.id_deputado})"></a>
 
     <h1 class="light text-center">{{convenio.id}}</h1>
     <p ng-repeat="word in words | orderBy:'-weight'" ng-style="{'font-size': word.weight*0.6+'em'}">{{word.word}}</p>
