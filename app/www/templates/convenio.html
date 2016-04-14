@@ -1,11 +1,17 @@
-<ion-view view-title="Convênios de {{dept.nome}}">
+<ion-view view-title="Convênios">
 
   <ion-content padding="true" class="colorfull nm-calm">
 
-      <a class="button button-icon ion-android-arrow-back search-button" ui-sref="app.profile({ id_deputado: dept.id_deputado})"></a>
+    <div class="profile text-center">
+      <div class="text-left">
+        <a class="button button-icon ion-android-arrow-back search-button" ui-sref="app.profile({ id_deputado: convenio.id_deputado})"></a>
+      </div>
+
+      <h3 class="title">{{convenio.vl_global}}</h3>
+      <h4>{{convenio.dt_publicacao}}</h4>
+    </div>
 
     <h1 class="light text-center">{{convenio.id}}</h1>
-    <p ng-repeat="word in words | orderBy:'-weight'" ng-style="{'font-size': word.weight*0.6+'em'}">{{word.word}}</p>
 
   </ion-content>
 </ion-view>

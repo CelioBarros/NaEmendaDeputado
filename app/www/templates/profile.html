@@ -1,6 +1,6 @@
 <ion-view>
 
-  <ion-content padding="false">
+  <ion-content padding="false" class="colorfull nm-calm">
 
     <div class="profile text-center colorfull nm-dark padding">
       <div class="text-right colorfull nm-dark">
@@ -16,21 +16,34 @@
       <h4 class="capt-number">{{dept.partido}} - {{dept.uf}}</h4>
     </div>
 
-    <div class="row text-center dest-number padding-top">
-      <div class="col">849</div>
+    <div class="row text-center dest-number padding-top colorfull">
+      <div class="col">{{dept.convenios.length}}</div>
       <div class="col">{{dept.TotalConvenios | currency:"R$ "}}</div>
     </div>
-    <div class="row text-center capt-number">
+    <div class="row text-center capt-number colorfull">
       <div class="col">Nº Convênios</div>
       <div class="col">Total Gasto</div>
     </div>
 
-    <div class="profile text-center colorfull nm-calm padding-bottom">
-      <h3 class="title">Convênios</h3>
+    <div class="profile colorfull nm-calm padding-bottom">
+      <h4 class="title text-center padding-vertical">CONVÊNIOS</h4>
 
-      <div class="card" ng-repeat="convenio in dept.convenios">
-        <div class="item item-text-wrap" ui-sref="app.convenio({ id_convenio: convenio.id_convenio})">
+      <p class="text-center" ng-show="dept.convenios.length < 1">Este deputado não possui convênios</p>
+
+      <div class="card" ui-sref="app.convenio({ id_deputado: dept.id_deputado, id_convenio: convenio.id_convenio})" ng-repeat="convenio in dept.convenios">
+        <div class="item item-divider">
+            Nº {{convenio.id_convenio}}
+        </div>
+        <div class="item item-text-wrap">
           <p>{{convenio.objeto_convenio}}</p>
+          <div class="row text-center">
+            <div class="col"><strong>{{convenio.vl_global}}</strong></div>
+            <div class="col"><strong>{{convenio.vl_repasse}}</strong></div>
+          </div>
+          <div class="row capt-number text-center">
+            <div class="col">Valor global</div>
+            <div class="col">Valor de repasse</div>
+          </div>
         </div>
       </div>
     </div>
