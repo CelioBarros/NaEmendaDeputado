@@ -16,6 +16,9 @@
 .img-circle {
   border-radius: 50%;
 }
+.icon-right {
+  padding-right: 12px;
+}
 .icon-circle {
   background-color: #fff;
   border-radius: 50%;
@@ -40,12 +43,14 @@ h3 {
 .logo {
   text-align: center;
   margin: auto;
-  width: 50px;
+  width: 200px;
   opacity: 1;
   transition: all 0.5s ease;
+  padding-bottom: 35px;
 }
 .logo.logo-folded {
   width: 0;
+  padding-bottom: 0;
   opacity: 0;
 }
 .profile {
@@ -58,8 +63,8 @@ h3 {
 .search-box.search-box-folded {
   margin-bottom: 38px;
 }
-.list:last-child.search-box-input-folded {
-  margin-bottom: -36px;
+.item.search-box-input-folded {
+  margin-bottom: -45px;
 }
 /* ionic overhide */
 .placeholder-icon:first-child {

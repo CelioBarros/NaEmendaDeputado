@@ -58,6 +58,8 @@ angular.module('emenda.controllers', [])
   }
   $scope.stopSearch = function() {
     $scope.searchTerm.isSearching = false;
+    $scope.deputados = [];
+    $scope.searchTerm.term = "";
   }
   $scope.search = function() {
     $scope.searchTerm.isLoading = true;
