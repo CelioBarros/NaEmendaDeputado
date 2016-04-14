@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
 .text-center {
   text-align: center;
 }
@@ -55,7 +57,6 @@ h2, h4 {
 h3 {
   color: #6C7A89;
 }
-
 .lin-back {
   background-color: #f5f5f5;
 }
@@ -63,7 +64,6 @@ h3 {
   background-color: #ECECEC;
 }
 .dest-number {
-  font-family: 'Roboto', sans-serif;
   color: #F89406;
   font-weight: 700;
   font-size: large;
@@ -81,18 +81,49 @@ hr {
 .nome-dep {
   color: #F89406;
 }
+.search-bar {
+  text-align: right;
+  height: 45px;
+}
+.search-button {
+  font-size: 30px;
+  color: orange;
+  margin-top: 1%;
+}
+.about-item {
+  background-color: #fff;
+  padding-top: 5%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-bottom: 4%;
+  margin-bottom: 20px;
+}
+
+.contact-icon {
+  color: #6C7A89;
+  font-size: 30px;
+}
+
+.contact-icon:hover {
+  color: #6C7A89;
+}
+
+.contact-icon:active {
+  color: #F89406;
+}
 
 
-@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+
 .tooltip {
   text-align: center;
-  line-height: 150%;
+  line-height: 100%;
   color: #6C7A89;
   border: 5px solid #6C7A89;
   width: 80%;
   padding: 10px;
-  font-size: 15px;
-  line-height: 100%;
+  font-size: 16px;
+  line-height: 120%;
   position: absolute;
   top: 50%;
   left: 50%;
