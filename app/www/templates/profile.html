@@ -1,13 +1,20 @@
-<ion-view view-title="Perfil do deputado">
+<ion-view view-title="Perfil do Deputado">
 
   <ion-content padding="true" class="has-header colorfull nm-dark">
 
     <div class="profile text-center">
-      <!-- <img ng-src="http://ionicframework.com/img/docs/mcfly.jpg" alt="{{dept.nome}}" class="img-circle"> -->
+    <img ng-src="http://ionicframework.com/img/docs/mcfly.jpg" alt="{{dept.nome}}" class="img-circle">
 
-      <h1 class="light">{{dept.nome}}</h1>
-      <h3 class="light">{{dept.partido}} | {{dept.uf}}</h3>
+      <h2>{{dept.nome}}</h2>
+      <h4>{{dept.partido}} - {{dept.uf}}</h4>
     </div>
+
+    <div class="row">
+      <div class="col col-75">Total Gasto em Convênios</div>
+      <div class="col">{{dept.TotalConvenios}}</div>
+    </div>
+
+    <h3>Convênios</h3>
 
     <div class="card" ng-repeat="convenio in dept.convenios">
       <div class="item item-text-wrap" ui-sref="app.convenio({ id_convenio: convenio.id_convenio})">

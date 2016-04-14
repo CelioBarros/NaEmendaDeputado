@@ -12,6 +12,12 @@
 .img-circle {
   border-radius: 50%;
 }
+h2, h4 {
+  color: #fff;
+}
+h3 {
+  color: #f8f8f8;
+}
 .button-go {
   float: right;
 }
@@ -22,6 +28,9 @@
   width: 50px;
   opacity: 1;
   transition: all 0.5s ease;
+}
+ion-content {
+  background-color: #f8f8f8;
 }
 .logo.logo-folded {
   width: 0;
