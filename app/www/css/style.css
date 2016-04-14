@@ -56,6 +56,10 @@ h3 {
 .profile {
   padding-top: 15px;
 }
+.convenio strong {
+  font-size: 1.4em;
+  line-height: 1.4em;
+}
 .search-box {
   padding-top: 50px;
   padding-bottom: 15px;

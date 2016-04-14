@@ -1,14 +1,27 @@
 <ion-view view-title="Convênios">
 
-  <ion-content padding="true" class="colorfull nm-calm">
+  <ion-content padding="false" class="colorfull nm-calm">
 
-    <div class="profile text-center">
-      <div class="text-left">
-        <a class="button button-icon ion-android-arrow-back search-button" ui-sref="app.profile({ id_deputado: convenio.id_deputado})"></a>
+    <div class="convenio">
+      <div class="padding">
+        <div class="text-left">
+          <a class="button button-icon ion-android-arrow-back search-button" ui-sref="app.profile({ id_deputado: convenio.id_deputado})"></a>
+        </div>
+
+        <h3 class="title">{{convenio.objeto_convenio}}</h3>
+        <p>{{convenio.dt_publicacao}}</p>
       </div>
-
-      <h3 class="title">{{convenio.vl_global}}</h3>
-      <h4>{{convenio.dt_publicacao}}</h4>
+      <div class="row">
+        <div class="col">Valor do convênio</div>
+        <div class="col text-right"><strong>{{convenio.vl_global}}</strong></div>
+      </div>
+      <div class="row" ng-hide="(convenio.vl_global == convenio.vl_repasse)">
+        <div class="col">Valor repassado</div>
+        <div class="col text-right"><strong>{{convenio.vl_repasse}}</strong></div>
+      </div>
+      <div class="row" ng-hide="(convenio.vl_global == convenio.vl_repasse)">
+        <div class="col">{{convenio.acao}}</div>
+      </div>
     </div>
 
     <h1 class="light text-center">{{convenio.id}}</h1>
