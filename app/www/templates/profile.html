@@ -25,14 +25,25 @@
       <div class="col">Total Gasto</div>
     </div>
 
-    <div class="profile text-center colorfull nm-calm padding-bottom">
-      <h3 class="title">Convênios</h3>
+    <div class="profile colorfull nm-calm padding-bottom">
+      <h4 class="title text-center padding-vertical">CONVÊNIOS</h4>
 
-      <p ng-show="dept.convenios.length < 1">Este deputado não possui convênios</p>
+      <p class="text-center" ng-show="dept.convenios.length < 1">Este deputado não possui convênios</p>
 
-      <div class="card" ng-repeat="convenio in dept.convenios">
-        <div class="item item-text-wrap" ui-sref="app.convenio({ id_convenio: convenio.id_convenio})">
+      <div class="card" ui-sref="app.convenio({ id_convenio: convenio.id_convenio})" ng-repeat="convenio in dept.convenios">
+        <div class="item item-divider">
+            Nº {{convenio.id_convenio}}
+        </div>
+        <div class="item item-text-wrap">
           <p>{{convenio.objeto_convenio}}</p>
+          <div class="row text-center">
+            <div class="col"><strong>{{convenio.vl_global}}</strong></div>
+            <div class="col"><strong>{{convenio.vl_repasse}}</strong></div>
+          </div>
+          <div class="row capt-number text-center">
+            <div class="col">Valor global</div>
+            <div class="col">Valor de repasse</div>
+          </div>
         </div>
       </div>
     </div>
