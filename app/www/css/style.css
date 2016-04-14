@@ -98,6 +98,10 @@ h3 {
   color: #6C7A89;
   font-size: small;
 }
+.capt-partido {
+  color: #ccc;
+  font-size: small;
+}
 hr {
   line-height: 1px;
   border: 0;
@@ -105,6 +109,9 @@ hr {
 }
 .title {
   color: #F19600;
+}
+.title-con {
+  color: #fff;
 }
 .search-button,
 .search-button:hover {

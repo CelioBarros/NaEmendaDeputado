@@ -42,6 +42,13 @@ def busca_deputado(nome_deputado):
 	response = make_response(response)
 	response.headers['Access-Control-Allow-Origin'] = "*"
 	return response
+
+@app.route('/api/deputado/<id_deputado>/temas')
+def temas_por_deputado(id_deputado):
+	response = api_deputado.temas_por_deputado(str(unicodedata.normalize('NFKD', id_deputado).encode('utf-8','ignore')))
+	response = make_response(response)
+	response.headers['Access-Control-Allow-Origin'] = "*"
+	return response
 	
 if __name__ == '__main__':
 	app.debug = True

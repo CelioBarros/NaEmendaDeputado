@@ -106,3 +106,16 @@ def busca(nome_deputado):
 
 
 
+def temas_por_deputado(id_deputado):
+	info_deputado = {}
+	with open('../data/dep_temas.csv') as csvfile:
+		reader = csv.DictReader(csvfile, delimiter=",")
+		for row in reader:
+			autor_id = str(row['Autor.id'])
+			autor_id = force_decode(str(autor_id))
+			autor_id = str(unicodedata.normalize('NFKD', autor_id).encode('utf-8','ignore'))
+
+			if (id_deputado == autor_id):
+				info_deputado = {"id_deputado":autor_id, "Temas":row['TEMAS']}
+				break
+	return json.dumps(info_deputado)
