@@ -69,7 +69,8 @@ angular.module('emenda.controllers', [])
 .controller('SearchCtrl', function($scope, $http) {
   $scope.searchTerm = {
     term: "",
-    isSearching: false
+    isSearching: false,
+    isLoading: false
   };
   $scope.showFilter = false;
   $scope.deputados = [];
@@ -84,9 +85,11 @@ angular.module('emenda.controllers', [])
     $scope.searchTerm.isSearching = false;
   }
   $scope.search = function() {
+    $scope.searchTerm.isLoading = true;
     $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/busca/'+$scope.searchTerm.term)
       .then(function(response) {
         $scope.deputados = response.data;
+        $scope.searchTerm.isLoading = false;
       });
   }
 })
