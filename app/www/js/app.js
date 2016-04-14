@@ -33,6 +33,15 @@ angular.module('emenda', ['ionic', 'emenda.controllers'])
         }
       }
     })
+    .state('app.searchEstado', {
+      url: '/searchEstado',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/search.html',
+          controller: 'SearchCtrlEstado'
+        }
+      }
+    })
   .state('app.profile', {
     url: '/profile/:id_deputado',
     views: {

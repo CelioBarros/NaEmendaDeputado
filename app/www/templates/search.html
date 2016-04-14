@@ -3,6 +3,7 @@
   <ion-content padding="false" class="colorfull" ng-class="{'nm-energized': !searchTerm.isSearching}">
 
     <div class="search-box colorfull nm-energized" ng-class="{'search-box-folded': searchTerm.isSearching}">
+
       <div class="logo" ng-class="{'logo-folded': searchTerm.isSearching}">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" viewBox="0 0 12 27.5" version="1.1" x="0px" y="0px" width="100%">
           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
@@ -11,21 +12,31 @@
         </svg>
       </div>
 
-      <div class="list list-inset" ng-class="{'search-box-input-folded': searchTerm.isSearching}">
-        <form ng-submit="search()">
+
+      <div class="list list-inset" ng-class="{'search-box-input-folded': searchTermEstado.isSearching}">
+        <form ng-submit="searchEstado()">
           <label class="item item-input">
             <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" placeholder="Pesquisar deputado" ng-model="searchTerm.term" ng-focus="startSearch()">
+            <input type="text" placeholder="Estado" ng-model="searchTermEstado.term" ng-focus="startSearch()">
           </label>
         </form>
       </div>
 
-    </div>
+      <div class="list list-inset" ng-class="{'search-box-input-folded': searchTerm.isSearching}">
+        <form ng-submit="search()">
+          <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Deputado" ng-model="searchTerm.term" ng-focus="startSearch()">
+          </label>
+        </form>
+      </div>
+
+    </div> <!-- search box -->
 
     <div class="card" ng-repeat="dept in deputados">
       <div class="item" ui-sref="app.profile({ id_deputado: dept.id_deputado})">
         <!-- <img ng-src="{{dept.img}}"> -->
-        <h2>{{dept.nome}}</h2>
+        <h2 class="dark">{{dept.nome}}</h2>
         <p>{{dept.partido}} | {{dept.uf}}</p>
       </div>
     </div>
