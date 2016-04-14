@@ -70,6 +70,12 @@ h3 {
 .item.search-box-input-folded {
   margin-bottom: -45px;
 }
+.tema-odd {
+  font-size: 1.6em;
+}
+.tema-even {
+  font-weight: normal;
+}
 /* ionic overhide */
 .placeholder-icon:first-child {
   padding-right: 12px;

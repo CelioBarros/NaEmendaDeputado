@@ -81,6 +81,11 @@ angular.module('emenda.controllers', [])
     .then(function(response) {
       $scope.dept.convenios = response.data;
     }, function(data) {});
+  $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/deputado/'+id_deputado+'/temas')
+    .then(function(response) {
+      var data = response.data
+      $scope.dept.temas = data.Temas.split(',');
+    }, function(data) {});
 })
 
 .controller('ConvenioCtrl', function($scope, $http, $stateParams) {

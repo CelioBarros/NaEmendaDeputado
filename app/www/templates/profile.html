@@ -14,6 +14,14 @@
 
       <h3 class="title">{{dept.nome}}</h3>
       <h4 class="capt-partido">{{dept.partido}} - {{dept.uf}}</h4>
+      <div ng-show="dept.temas.length > 0">
+        <p>
+          Este deputado investe mais em<br>
+          <span ng-repeat="tema in dept.temas">
+            <strong>{{tema}}{{$last ? '' : ' | '}}</strong>
+          </span>
+        </p>
+      </div>
     </div>
 
     <div class="row text-center dest-number padding-top colorfull">
