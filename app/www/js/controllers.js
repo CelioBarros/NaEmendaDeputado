@@ -99,16 +99,11 @@ angular.module('emenda.controllers', [])
   $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/deputado/'+id_deputado)
     .then(function(response) {
       $scope.dept = response.data;
-      $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/deputado/'+id_deputado+'/convenios')
-        .then(function(response) {
-          $scope.dept.convenios = response.data;
-        }, function(data) {
-          //error callback
-        });
-
-    }, function(data) {
-      //error callback
-    });
+    }, function(data) {});
+  $http.get('http://naemendadosdeputados-celiobarros.rhcloud.com/api/deputado/'+id_deputado+'/convenios')
+    .then(function(response) {
+      $scope.dept.convenios = response.data;
+    }, function(data) {});
 })
 
 .controller('ConvenioCtrl', function($scope, $stateParams) {

@@ -4,13 +4,26 @@
 .options-form {
   margin-top: 30px;
 }
-.colorfull               { background-color: rgba(77, 64, 64, 0.08); transition: background-color 0.25s ease;}
+.colorfull               { background-color: #f1f1f1; transition: background-color 0.25s ease;}
 .colorfull.nm-energized  { background-color: #F19600; }
 .colorfull.nm-dark       { background-color: #4D4040; color: #FFF; }
-.colorfull.nm-calm       { background-color: #4872B5; }
+.colorfull.nm-calm       { background-color: #4872B5; color: #FFF; }
+  .colorfull.nm-more-calm       { background-color: #286cd6; color: #FFF; }
+  .colorfull.nm-even-more-calm  { background-color: #1566e4; color: #FFF; }
 
 .img-circle {
   border-radius: 50%;
+}
+.icon-circle {
+  background-color: #fff;
+  border-radius: 50%;
+  margin: auto;
+  width: 120px;
+  height: 120px;
+  padding: 15px;
+}
+.icon-circle > svg {
+  fill: #4D4040;
 }
 h2, h4 {
   color: #fff;
@@ -50,6 +63,9 @@ ion-content {
   margin-bottom: -36px;
 }
 /* ionic overhide */
+.row {
+  padding: 0;
+}
 .placeholder-icon:first-child {
   padding-right: 12px;
 }
