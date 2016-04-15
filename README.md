@@ -16,7 +16,7 @@ A análise textual é realizada aplicando a técnica Latent Dirichlet allocation
 
 Não existem outros aplicativos que se usam dos dados dos governo para criar esse perfil dos deputados como fazemos de maneira simples e intuitiva, portanto o Na Emenda dos Deputados se torna uma poderosa ferramenta no combate a corrupção.
 
-Acompanhe também na página no [Facebook](https://www.facebook.com/Na-Emenda-do-Deputado-1610128102646608)!
+Acompanhe também na página no [Facebook](https://www.facebook.com/NaEmendaDosDeputados)!
 
 
 ![Screenshots](https://github.com/CelioBarros/NaEmendaDeputado/blob/master/imagens/screenshots.png)
