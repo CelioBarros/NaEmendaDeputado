@@ -4,7 +4,7 @@ A iniciativa do projeto veio de um brainstorm de ideias sobre o que seria possí
 
 O Na Emenda dos Deputados visa apresentar os convênios aos quais um deputado está envolvido e as principais áreas de ação desse deputado. Assim, o usuário pode monitorar os convênios e ações de um deputado.
 
-Ao disponibilizar à população um meio simples de monitoramento das atividades parlamentares, estamos impulsionando o aumento da fiscalização por parte da mesma que, já é em si, essencial no processo de identificação e controle da corrupção.
+Ao disponibilizar à população um meio simples de monitoramento das atividades parlamentares, estamos impulsionando o aumento da fiscalização por parte da mesma, que já é em si, essencial no processo de identificação e controle da corrupção.
 
 O usuário pode selecionar dentre os vários deputados brasileiros e ver seus perfis e áreas de atuação, assim tornando visível gastos através de emendas e convênios, possibilitando ao usuário achar despesas que poderiam ser possíveis inconsistências.
 
