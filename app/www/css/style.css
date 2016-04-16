@@ -145,23 +145,53 @@ hr {
 
 .conv-date {
   background-color: #3498db;
-  margin-top: 3%;
-  margin-bottom: 3%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   color: #fff;
+}
+
+.co-d {
+    color: #216490;
 }
 
 .conv-total {
   background-color: #f1c40f;
-  margin-top: 3%;
-  margin-bottom: 3%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   color: #fff;
 }
 
+.co-t {
+    color: #a0830e;
+}
+
 .conv-repasse {
-  background-color: #2ecc71;
-  margin-top: 3%;
-  margin-bottom: 3%;
+  background-color: #9b59b6;
+  margin-top: 2%;
+  margin-bottom: 2%;
   color: #fff;
+}
+
+.co-r {
+    color: #573166;
+}
+
+.conv-acao {
+  background-color: #2ecc71;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color: #fff;
+}
+
+.co-a {
+    color: #197d44;
+}
+
+.conv-t {
+  text-align: center;
+  color: orange;
+  background-color: #fff;
+  font-size: large;
 }
 
 .ic {
@@ -172,20 +202,12 @@ hr {
   font-size: 0.8em;
 }
 
-.conv-acao {
-  background-color: #e74c3c;
-  margin-top: 3%;
-  margin-bottom: 3%;
-  color: #fff;
-}
-
-.conv-t {
-  text-align: center;
-  color: orange;
-  background-color: #fff;
-  font-size: large;
-}
-
 .bg-white {
   background-color: #fff;
+}
+
+.dest {
+  font-size: 1.8em;
+  padding-top: 8px;
+  font-weight: bold;
 }
