@@ -1,30 +1,78 @@
 <ion-view view-title="Convênios">
 
-  <ion-content padding="false" class="colorfull nm-calm">
+  <ion-content padding="false" class="colorfull bg-white">
 
-    <div class="convenio">
+    <div class="convenio colorfull bg-white padding">
+
       <div class="padding">
         <div class="text-left">
           <a class="button button-icon ion-android-arrow-back search-button" ui-sref="app.profile({ id_deputado: convenio.id_deputado})"></a>
         </div>
+      </div>
 
-        <h3 class="title">{{convenio.objeto_convenio}}</h3>
-        <p>{{convenio.dt_publicacao}}</p>
+      <div class="text-center">
+      <div class="colorfull padding conv-t">
+        <div class="row">
+          <div class="col">
+            {{convenio.acao}}
+          </div>
+        </div>
       </div>
-      <div class="row">
-        <div class="col">Valor do convênio</div>
-        <div class="col text-right"><strong>{{convenio.vl_global}}</strong></div>
+
+      <div class="text-center">
+      <div class="colorfull padding conv-date">
+        <div class="row">
+          <div class="col-33">
+            <i class="icon ion-calendar ic co-d"></i></br>
+            <div class="ic-cap co-d">Data de Publicação</div>
+          </div>
+          <div class="col">
+            <div class="dest co-d">{{convenio.dt_publicacao}}</div>
+          </div>
+        </div>
       </div>
-      <div class="row" ng-hide="(convenio.vl_global == convenio.vl_repasse)">
-        <div class="col">Valor repassado</div>
-        <div class="col text-right"><strong>{{convenio.vl_repasse}}</strong></div>
+
+      <div class="colorfull padding conv-total">
+        <div class="row">
+          <div class="col-33">
+            <i class="icon ion-pricetag ic co-t"></i></br>
+            <div class="ic-cap co-t">Valor Global</div>
+          </div>
+          <div class="col">
+            <div class="dest co-t">{{convenio.vl_global}}</div>
+          </div>
+        </div>
       </div>
-      <div class="row" ng-hide="(convenio.vl_global == convenio.vl_repasse)">
-        <div class="col">{{convenio.acao}}</div>
+
+      <div class="colorfull padding conv-repasse" ng-hide="(convenio.vl_global == convenio.vl_repasse)">
+        <div class="row">
+          <div class="col-33">
+            <i class="icon ion-social-usd ic co-r"></i></br>
+            <div class="ic-cap co-r">Valor Repassado</div>
+          </div>
+          <div class="col">
+            <div class="dest co-r">{{convenio.vl_repasse}}</div>
+          </div>
+        </div>
       </div>
+
+      <div class="colorfull padding conv-acao">
+        <div class="row">
+            <div class="col-33">
+              <i class="icon ion-document-text ic co-a"></i></br>
+              <div class="ic-cap co-a">Objetivo</div>
+            </div>
+            <div class="col co-a" ng-hide="(convenio.vl_global == convenio.vl_repasse)">
+              {{convenio.objeto_convenio}}
+              <!--{{convenio.acao}}-->
+            </div>
+        </div>
+      </div>
+
+      <h1>{{convenio.id}}</h1>
+
     </div>
-
-    <h1 class="light text-center">{{convenio.id}}</h1>
+    </div>
 
   </ion-content>
 </ion-view>
