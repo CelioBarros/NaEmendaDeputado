@@ -19,7 +19,7 @@ def info_pessoais_deputado(id_deputado):
 
 			if (id_deputado == autor_id):
 				nome_deputado = str(unicodedata.normalize('NFKD', force_decode(row['Autor'])).encode('utf-8','ignore'))
-				info_deputado = {"nome":nome_deputado,"uf":row['Autor..UF.'], "partido":row['Partido'], "id_deputado":autor_id, "TotalConvenios":row['TotalConvenios']}
+				info_deputado = {"nome":nome_deputado,"uf":row['Autor..UF.'], "partido":row['Partido'], "id_deputado":autor_id, "TotalConvenios":row['TotalConvenios'],"cod_img": row['CodImg']}
 				break
 	return json.dumps(info_deputado)
 
