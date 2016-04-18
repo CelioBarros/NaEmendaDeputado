@@ -19,8 +19,11 @@ def info_pessoais_deputado(id_deputado):
 
 			if (id_deputado == autor_id):
 				nome_deputado = str(unicodedata.normalize('NFKD', force_decode(row['Autor'])).encode('utf-8','ignore'))
-				info_deputado = {"nome":nome_deputado,"uf":row['Autor..UF.'], "partido":row['Partido'], "id_deputado":autor_id, "TotalConvenios":row['TotalConvenios'],"cod_img": row['CodImg']}
+				info_deputado = {"nome":nome_deputado,"uf":row['Autor..UF.'], "partido":row['Partido'], "id_deputado":autor_id, "TotalConvenios":row['TotalConvenios'],
+				"cod_img": "http://www.camara.leg.br/internet/deputado/bandep/" + row['CodImg'] + ".jpg"}
 				break
+	print json.dumps(info_deputado)
+		
 	return json.dumps(info_deputado)
 
 def force_decode(string, codecs=['utf8', 'cp1252']):
