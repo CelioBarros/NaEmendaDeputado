@@ -62,9 +62,11 @@ h3 {
 .search-box {
   padding-top: 50px;
   padding-bottom: 15px;
+  transition: all 0.5s ease;
 }
 .search-box.search-box-folded {
   margin-bottom: 38px;
+  padding-top: 40px;
 }
 .item.search-box-input-folded {
   margin-bottom: -45px;
