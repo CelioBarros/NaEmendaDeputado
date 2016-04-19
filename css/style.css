@@ -19,16 +19,12 @@
 .icon-right {
   padding-right: 12px;
 }
-.icon-circle {
-  background-color: #fff;
-  border-radius: 50%;
+.img-circle-wrapper {
   margin: auto;
-  width: 120px;
-  height: 120px;
-  padding: 15px;
-}
-.icon-circle > svg {
-  fill: #4D4040;
+  width: 114px;
+  height: 114px;
+  overflow: hidden;
+  border-radius: 50%;
 }
 h2, h4 {
   color: #fff;
@@ -56,6 +52,9 @@ h3 {
 .profile {
   padding-top: 15px;
 }
+.profile > strong {
+  font-size: 1.5em;
+}
 .convenio strong {
   font-size: 1.4em;
   line-height: 1.4em;
@@ -63,9 +62,11 @@ h3 {
 .search-box {
   padding-top: 50px;
   padding-bottom: 15px;
+  transition: all 0.5s ease;
 }
 .search-box.search-box-folded {
   margin-bottom: 38px;
+  padding-top: 40px;
 }
 .item.search-box-input-folded {
   margin-bottom: -45px;
@@ -104,9 +105,13 @@ h3 {
   color: #6C7A89;
   font-size: small;
 }
-.capt-partido {
+.title-small {
   color: #ccc;
   font-size: small;
+}
+.tags {
+  font-size: 1.2em;
+  line-height: 1.6em;
 }
 hr {
   line-height: 1px;
